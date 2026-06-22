@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ionpoff — Company Introduction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --red: #E53935;
+    --orange: #FB8C00;
+    --yellow: #F9A825;
+    --green: #43A047;
+    --blue: #1E88E5;
+    --indigo: #3949AB;
+    --purple: #8E24AA;
+    --text: #1a1a1a;
+    --text-sub: #555;
+    --text-muted: #888;
+    --bg: #fff;
+    --bg-secondary: #f7f7f5;
+    --border: rgba(0,0,0,0.1);
+    --radius: 14px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .logo { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+  .logo span:nth-child(1) { color: var(--red); }
+  .logo span:nth-child(2) { color: var(--orange); }
+  .logo span:nth-child(3) { color: var(--yellow); }
+  .logo span:nth-child(4) { color: var(--green); }
+  .logo span:nth-child(5) { color: var(--blue); }
+  .logo span:nth-child(6) { color: var(--indigo); }
+  .logo span:nth-child(7) { color: var(--purple); }
+
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-sub); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    padding: 100px 48px 80px;
+    text-align: center;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .hero-logo {
+    font-size: 72px; font-weight: 700; line-height: 1;
+    margin-bottom: 28px; letter-spacing: -2px;
+  }
+  .hero-logo span:nth-child(1) { color: var(--red); }
+  .hero-logo span:nth-child(2) { color: var(--orange); }
+  .hero-logo span:nth-child(3) { color: var(--yellow); }
+  .hero-logo span:nth-child(4) { color: var(--green); }
+  .hero-logo span:nth-child(5) { color: var(--blue); }
+  .hero-logo span:nth-child(6) { color: var(--indigo); }
+  .hero-logo span:nth-child(7) { color: var(--purple); }
+  .hero-dot { width: 10px; height: 10px; background: var(--red); border-radius: 50%; display: inline-block; position: relative; top: -46px; left: -74px; }
+
+  .hero-sub {
+    font-size: 16px; color: var(--text-sub);
+    max-width: 520px; margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 80px 48px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .section-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 28px; font-weight: 700; margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .section-desc {
+    font-size: 15px; color: var(--text-sub);
+    max-width: 520px; margin-bottom: 48px; line-height: 1.8;
+  }
+
+  /* VISION */
+  .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .vision-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+  .vision-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--red); margin-bottom: 14px;
+    border: 1px solid var(--red); border-radius: 100px;
+    padding: 3px 12px;
+  }
+  .vision-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .vision-card p { font-size: 14px; color: var(--text-sub); line-height: 1.8; }
+
+  /* BIZ AREAS */
+  .biz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .biz-card {
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    border-top: 3px solid;
+    background: var(--bg);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .biz-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .biz-card:nth-child(1) { border-top-color: var(--red); }
+  .biz-card:nth-child(2) { border-top-color: var(--orange); }
+  .biz-card:nth-child(3) { border-top-color: var(--yellow); }
+  .biz-card:nth-child(4) { border-top-color: var(--green); }
+  .biz-card:nth-child(5) { border-top-color: var(--blue); }
+  .biz-card:nth-child(6) { border-top-color: var(--purple); }
+  .biz-icon { font-size: 24px; margin-bottom: 14px; }
+  .biz-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .biz-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+
+  /* COLLAB */
+  .collab-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 7px 18px; border-radius: 100px; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: 1px solid var(--border);
+    background: transparent; color: var(--text-sub);
+    transition: all 0.15s; font-family: 'Noto Sans KR', sans-serif;
+  }
+  .tab-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
+  .tab-btn:hover:not(.active) { background: var(--bg-secondary); color: var(--text); }
+
+  .collab-list { display: flex; flex-direction: column; gap: 10px; }
+  .collab-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px;
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    transition: background 0.15s;
+  }
+  .collab-item:hover { background: var(--bg-secondary); }
+  .collab-brand { font-size: 14px; font-weight: 700; min-width: 130px; color: var(--text); }
+  .collab-detail { font-size: 13px; color: var(--text-sub); flex: 1; }
+  .collab-badge {
+    font-size: 11px; font-weight: 700; padding: 4px 12px;
+    border-radius: 100px; white-space: nowrap;
+    background: #EFF6FF; color: #1d4ed8;
+  }
+  .collab-badge.fnb { background: #FFF7ED; color: #c2410c; }
+  .collab-badge.beauty { background: #FDF4FF; color: #86198f; }
+  .collab-badge.lifestyle { background: #F0FDF4; color: #15803d; }
+  .collab-badge.tech { background: #EFF6FF; color: #1d4ed8; }
+
+  /* IP GRID */
+  .ip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .ip-pill {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 0.5px solid var(--border);
+    font-size: 13px; color: var(--text-sub);
+    text-align: center;
+    background: var(--bg-secondary);
+    transition: all 0.15s;
+  }
+  .ip-pill:hover { background: var(--bg); border-color: var(--red); color: var(--text); }
+
+  /* MERCH */
+  .merch-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .merch-tag {
+    padding: 8px 16px; border-radius: 8px;
+    font-size: 13px; color: var(--text-sub);
+    background: var(--bg-secondary);
+    border: 0.5px solid var(--border);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 48px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 0.5px solid var(--border);
+  }
+  footer .footer-logo { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 13px; }
+    .hero { padding: 60px 20px 48px; }
+    .hero-logo { font-size: 48px; }
+    .hero-dot { top: -30px; left: -50px; width: 8px; height: 8px; }
+    .section { padding: 56px 20px; }
+    .vision-grid { grid-template-columns: 1fr; }
+    .biz-grid { grid-template-columns: 1fr 1fr; }
+    .collab-item { flex-wrap: wrap; }
+    footer { padding: 32px 20px; }
+  }
+  @media (max-width: 480px) {
+    .biz-grid { grid-template-columns: 1fr; }
+    .hero-logo { font-size: 36px; letter-spacing: -1px; }
+    .hero-dot { top: -22px; left: -36px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span>i</span><span>o</span><span>n</span><span>p</span><span>o</span><span>f</span><span>f</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">회사 소개</a></li>
+    <li><a href="#biz">사업 영역</a></li>
+    <li><a href="#collab">콜라보레이션</a></li>
+    <li><a href="#ip">IP 포트폴리오</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-logo">
+    <span>i</span><span>o</span><span>n</span><span>p</span><span>o</span><span>f</span><span>f</span>
+  </div>
+  <p class="hero-sub">
+    온·오프라인을 아우르는 혁신적인 경험을 통해,<br>
+    다양한 IP 홀더와 브랜드가 함께 성장하는<br>
+    새로운 생태계를 만들어갑니다.
+  </p>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-eyebrow">Company Overview</div>
+  <div class="section-title">비전 &amp; 미션</div>
+  <div class="vision-grid">
+    <div class="vision-card">
+      <div class="vision-tag">Vision</div>
+      <h3>새로운 IP 생태계</h3>
+      <p>온·오프라인을 아우르는 혁신적인 경험을 통해, 다양한 IP 홀더와 브랜드가 함께 성장하는 새로운 생태계를 만들어갑니다.</p>
+    </div>
+    <div class="vision-card">
+      <div class="vision-tag">Mission</div>
+      <h3>모든 IP의 가능성 발견</h3>
+      <p>IP의 인지도보다 중요한 것은 가능성입니다. 신생 IP부터 글로벌 슈퍼 IP까지, 모든 IP가 가진 고유의 가치를 발견하고 콘텐츠, 상품, 공간, 문화로 확장하여 새로운 경험을 만들어갑니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BIZ AREAS -->
+<section class="section" id="biz">
+  <div class="section-eyebrow">Business Areas</div>
+  <div class="section-title">사업 영역</div>
+  <p class="section-desc">IP 비즈니스의 전 과정을 아우르는 6가지 핵심 사업 영역을 운영합니다.</p>
+  <div class="biz-grid">
+    <div class="biz-card">
+      <div class="biz-icon">🤝</div>
+      <h3>IP 라이선싱 에이전트</h3>
+      <p>IP홀더와 계약 후 국내외 라이선시와 DEAL–계약–출시까지 전 과정 관리</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon">🧸</div>
+      <h3>머천다이징</h3>
+      <p>봉제, 문구, 잡화, 디지털 ACC 등 다양한 카테고리 상품화 기획, 제작, 유통</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon">✨</div>
+      <h3>콜라보레이션</h3>
+      <p>뷰티, 푸드, 프렌차이즈 등 다양한 브랜드 IP 콜라보레이션 기획 및 제안</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon">📺</div>
+      <h3>퍼블리싱 (콘텐츠 배급)</h3>
+      <p>공중파(SBS, MBC, EBS), 종편(JTBC), OTT(넷플릭스, SKB, KT, LG유플러스)</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon">🖌️</div>
+      <h3>캐릭터 개발</h3>
+      <p>트렌드 분석 기반 신규 IP·캐릭터 개발</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon">📦</div>
+      <h3>상품기획·생산대행</h3>
+      <p>IP 기반 상품의 기획부터 생산·공급망 관리까지 원스톱 대행</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLLABORATION -->
+<section class="section" id="collab">
+  <div class="section-eyebrow">Collaboration</div>
+  <div class="section-title">콜라보레이션 레퍼런스</div>
+  <p class="section-desc">다양한 브랜드와의 협업으로 IP의 가치를 확장해왔습니다.</p>
+
+  <div class="collab-tabs">
+    <button class="tab-btn active" onclick="filterCollab('all', this)">전체</button>
+    <button class="tab-btn" onclick="filterCollab('fnb', this)">F&amp;B</button>
+    <button class="tab-btn" onclick="filterCollab('beauty', this)">뷰티</button>
+    <button class="tab-btn" onclick="filterCollab('lifestyle', this)">라이프스타일</button>
+    <button class="tab-btn" onclick="filterCollab('tech', this)">테크/기기</button>
+  </div>
+
+  <div class="collab-list" id="collab-list"></div>
+</section>
+
+<!-- IP PORTFOLIO -->
+<section class="section" id="ip">
+  <div class="section-eyebrow">IP Licensing Agent</div>
+  <div class="section-title">IP 포트폴리오</div>
+  <p class="section-desc">작가 IP부터 글로벌 슈퍼 IP까지 다양한 라이선싱 파트너십을 보유하고 있습니다.</p>
+  <div class="ip-grid" id="ip-grid"></div>
+</section>
+
+<!-- MERCH -->
+<section class="section" id="merch">
+  <div class="section-eyebrow">Merchandising</div>
+  <div class="section-title">머천다이징 제조 역량</div>
+  <p class="section-desc">다양한 카테고리에 걸친 폭넓은 제조 노하우를 보유하고 있습니다.</p>
+  <div class="merch-tags">
+    <span class="merch-tag">피규어</span>
+    <span class="merch-tag">봉제인형</span>
+    <span class="merch-tag">봉제키링</span>
+    <span class="merch-tag">랜덤피규어</span>
+    <span class="merch-tag">그립톡</span>
+    <span class="merch-tag">아크릴키링</span>
+    <span class="merch-tag">카드스티커</span>
+    <span class="merch-tag">보조배터리</span>
+    <span class="merch-tag">거실화</span>
+    <span class="merch-tag">러그</span>
+    <span class="merch-tag">립케어</span>
+    <span class="merch-tag">지비츠</span>
+    <span class="merch-tag">금속마그넷</span>
+    <span class="merch-tag">키캡키링</span>
+    <span class="merch-tag">양말</span>
+    <span class="merch-tag">마우스패드</span>
+    <span class="merch-tag">머그컵</span>
+    <span class="merch-tag">스노우볼</span>
+    <span class="merch-tag">문구류</span>
+    <span class="merch-tag">디지털 액세서리</span>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <span style="color:var(--red)">i</span><span style="color:var(--orange)">o</span><span style="color:var(--yellow)">n</span><span style="color:var(--green)">p</span><span style="color:var(--blue)">o</span><span style="color:var(--indigo)">f</span><span style="color:var(--purple)">f</span>
+  </div>
+  <p>© 2025 ionpoff. All rights reserved.</p>
+</footer>
+
+<script>
+const collabs = [
+  { brand: "케이스티파이", detail: "영이의 숲 / 와다다곰 스마트폰 케이스 콜라보", category: "tech" },
+  { brand: "설빙", detail: "영이의 숲 굿즈 및 세트 상품 콜라보 (꽃카 보냉백, 스티커, 포장용기)", category: "fnb" },
+  { brand: "아임윤 (유니베라)", detail: "영이의 숲 기획세트 콜라보 — 그립톡, 키링, 카스토커, 메모지 포함", category: "beauty" },
+  { brand: "분다버그", detail: "영이의 숲 굿즈 기획세트 콜라보 (꽃카 바쿠백)", category: "fnb" },
+  { brand: "CU 편의점", detail: "영이의 숲 발렌타인데이 프로모션 / F&B 콜라보 (샌드, 봉세, 쿠키 등)", category: "fnb" },
+  { brand: "메가박스", detail: "영이의 숲 콤보세트 콜라보 (꽃카 미니캐리어 콤보)", category: "lifestyle" },
+  { brand: "해태아이스 (부라보콘)", detail: "영이의 숲 굿즈 콜라보 — 실리콘참, 차량용 방향제, 크리스마스 멀티팩", category: "fnb" },
+  { brand: "슬로울로켓 (ShakeBaby)", detail: "영이의 숲 굿즈 콜라보", category: "beauty" },
+  { brand: "비판톨 (Bepanthol)", detail: "영이의 숲 굿즈 및 이모티콘 콜라보", category: "beauty" },
+  { brand: "신세계푸드", detail: "영이의 숲 크리스마스 케이크 콜라보 (이마트)", category: "fnb" },
+  { brand: "굿피플", detail: "영이의숲 굿즈 콜라보 — 해외 교육지원 캠페인 연계", category: "lifestyle" },
+  { brand: "로벡틴 (Rovectin)", detail: "영이의 숲 굿즈 콜라보 (기획세트 증정)", category: "beauty" },
+];
+const catLabel = { fnb:"F&B", beauty:"뷰티", lifestyle:"라이프스타일", tech:"테크/기기" };
+
+function filterCollab(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = cat === 'all' ? collabs : collabs.filter(c => c.category === cat);
+  document.getElementById('collab-list').innerHTML = filtered.map(c => `
+    <div class="collab-item">
+      <div class="collab-brand">${c.brand}</div>
+      <div class="collab-detail">${c.detail}</div>
+      <div class="collab-badge ${c.category}">${catLabel[c.category]}</div>
+    </div>
+  `).join('');
+}
+
+filterCollab('all', document.querySelector('.tab-btn'));
+
+const ips = [
+  "Peanuts","Teletubbies","Strawberry Shortcake","Inspector Gadget",
+  "Caillou","Brave Bunnies","In the Night Garden","Yo Gabba Gabba!",
+  "Fall Guys","Clash of Clans","Brawl Stars","Sonic the Hedgehog",
+  "Playmobil","Fuggler","Dr. Seuss","영이의 숲","와다다곰","씨씨스토리"
+];
+document.getElementById('ip-grid').innerHTML = ips.map(ip =>
+  `<div class="ip-pill">${ip}</div>`
+).join('');
+</script>
+</body>
+</html>
